@@ -7,11 +7,19 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
-import {Inter} from '@remotion/google-fonts/Inter';
-import {JetBrainsMono} from '@remotion/google-fonts/JetBrainsMono';
+import {loadFont as loadInter} from '@remotion/google-fonts/Inter';
+import {loadFont as loadJetBrainsMono} from '@remotion/google-fonts/JetBrainsMono';
 
-const {fontFamily: inter} = Inter.loadFont();
-const {fontFamily: mono} = JetBrainsMono.loadFont();
+// API correcta de @remotion/google-fonts v4:
+// export nombrado `loadFont`, y se acotan weights/subsets para evitar timeouts.
+const {fontFamily: inter} = loadInter('normal', {
+  weights: ['700', '900'],
+  subsets: ['latin'],
+});
+const {fontFamily: mono} = loadJetBrainsMono('normal', {
+  weights: ['700'],
+  subsets: ['latin'],
+});
 
 const BG = '#050505';
 const GRID = '#121212';
